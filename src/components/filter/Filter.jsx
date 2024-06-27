@@ -1,14 +1,40 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import myContext from '../../context/data/myContext';
 
 function Filter() {
     const context = useContext(myContext);
     const { mode, searchkey, setSearchkey, filterType, setFilterType, filterPrice, setFilterPrice, product } = context;
 
+    const [filterTitle, setFilterTitle] = useState('');
+    const [uniqueTitles, setUniqueTitles] = useState([]);
+
     const resetFilter = () => {
         setFilterType(''); // Reset filterType to empty string
-        setFilterPrice(''); // Reset filterPrice to empty string
+        setFilterPrice('');
+        setFilterTitle(''); // Reset filterTitle to empty string
     };
+
+    // Function to extract unique categories from the product list
+    const getUniqueCategories = (products) => {
+        const categories = products.map(item => item.category);
+        return [...new Set(categories)]; // Use Set to remove duplicates and spread to convert back to array
+    };
+
+    // Get unique categories
+    const uniqueCategories = getUniqueCategories(product);
+
+    // Function to extract unique titles based on the selected category
+    const getUniqueTitles = (products, category) => {
+        if (!category) return [];
+        const titles = products
+            .filter(item => item.category === category)
+            .map(item => item.title);
+        return [...new Set(titles)]; // Use Set to remove duplicates and spread to convert back to array
+    };
+
+    useEffect(() => {
+        setUniqueTitles(getUniqueTitles(product, filterType));
+    }, [filterType, product]);
 
     return (
         <div>
@@ -58,8 +84,22 @@ function Filter() {
                                 }}
                             >
                                 <option value="">Select Category</option>
-                                {product.map((item, index) => (
-                                    <option key={index} value={item.category}>{item.category}</option>
+                                {uniqueCategories.map((category, index) => (
+                                    <option key={index} value={category}>{category}</option>
+                                ))}
+                            </select>
+                            <select
+                                value={filterTitle}
+                                onChange={(e) => setFilterTitle(e.target.value)}
+                                className="px-4 py-3 w-full rounded-md bg-gray-50 border-transparent outline-0 focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+                                style={{
+                                    backgroundColor: mode === 'dark' ? 'rgb(64 66 70)' : '',
+                                    color: mode === 'dark' ? 'white' : '',
+                                }}
+                            >
+                                <option value="">Select Title</option>
+                                {uniqueTitles.map((title, index) => (
+                                    <option key={index} value={title}>{title}</option>
                                 ))}
                             </select>
                             <select
