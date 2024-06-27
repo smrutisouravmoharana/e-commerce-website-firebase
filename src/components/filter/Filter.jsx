@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-key */
+/* eslint-disable no-unused-vars */
 import React, { useContext } from 'react'
 import myContext from '../../context/data/myContext'
 

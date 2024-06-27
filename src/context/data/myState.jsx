@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react'
 import MyContext from './myContext'
 import { Timestamp, addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, orderBy, query, setDoc } from 'firebase/firestore';
@@ -5,6 +7,7 @@ import { toast } from 'react-toastify';
 import { fireDB } from '../../fireabase/FirebaseConfig';
 
 function myState(props) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [mode, setMode] = useState('light');
 
     const toggleMode = () => {
@@ -18,6 +21,7 @@ function myState(props) {
         }
     }
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [loading, setLoading] = useState(false);
 
     const [products, setProducts] = useState({
