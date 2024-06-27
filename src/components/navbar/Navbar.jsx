@@ -120,13 +120,13 @@ export default function Navbar() {
           Get free delivery on orders over ₹300
         </p> */}
 
-        <nav aria-label="Top" className="px-4 sm:px-6 lg:px-8 shadow-xl" style={{ backgroundColor: mode === 'dark' ? '#282c34' : '#909485', color: 'white' }}>
+        <nav aria-label="Top" className="px-4 sm:px-6 lg:px-8 shadow-xl" style={{ backgroundColor: mode === 'dark' ? '#282c34' : '#acaef5', color: 'white' }}>
           <div className="">
             <div className="flex h-16 items-center">
               <button
                 type="button"
                 className="rounded-md p-2 text-white lg:hidden"
-                onClick={() => setOpen(true)} style={{ backgroundColor: mode === 'dark' ? 'rgb(80 82 87)' : '#909485', color: 'white' }}
+                onClick={() => setOpen(true)} style={{ backgroundColor: mode === 'dark' ? 'rgb(80 82 87)' : '#acaef5', color: 'white' }}
               >
                 <span className="sr-only">Open menu</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
