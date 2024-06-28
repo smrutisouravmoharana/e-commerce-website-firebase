@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import myContext from '../../context/data/myContext';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../redux/cartSlice';
@@ -10,6 +10,9 @@ function ProductCard() {
 
     const dispatch = useDispatch();
     const cartItems = useSelector((state) => state.cart);
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const productsPerPage = 8;
 
     const addCart = (product) => {
         dispatch(addToCart(product));
@@ -27,7 +30,25 @@ function ProductCard() {
             (filterType ? item.category.toLowerCase() === filterType.toLowerCase() : true) &&
             (filterPrice ? item.price.includes(filterPrice) : true)
         );
-    }).slice(0, 8); // Display only the first 8 products after filtering
+    });
+
+    // Calculate total pages based on the number of products per page
+    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+
+    // Calculate current products to display based on current page
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+
+    // Handle next page click
+    const nextPage = () => {
+        setCurrentPage((prev) => prev + 1);
+    };
+
+    // Handle previous page click
+    const prevPage = () => {
+        setCurrentPage((prev) => prev - 1);
+    };
 
     return (
         <section className="text-gray-600 body-font">
@@ -37,7 +58,7 @@ function ProductCard() {
                     <div className="h-1 w-20 bg-pink-600 rounded"></div>
                 </div>
                 <div className="flex flex-wrap -m-4">
-                    {filteredProducts.map((item, index) => {
+                    {currentProducts.map((item, index) => {
                         const { title, price, imageUrl, id } = item;
                         return (
                             <div key={index} className="p-4 md:w-1/4 drop-shadow-lg">
@@ -66,12 +87,32 @@ function ProductCard() {
                             </div>
                         );
                     })}
-                    {filteredProducts.length === 0 && (
+                    {currentProducts.length === 0 && (
                         <div className="col-span-4 text-center text-gray-500">
                             No products found.
                         </div>
                     )}
                 </div>
+                {totalPages > 1 && (
+                    <div className="flex justify-center mt-4">
+                        {currentPage > 1 && (
+                            <button
+                                onClick={prevPage}
+                                className="mx-1 py-1 px-3 focus:outline-none bg-gray-200 text-gray-600 rounded-lg"
+                            >
+                                Previous
+                            </button>
+                        )}
+                        {currentPage < totalPages && (
+                            <button
+                                onClick={nextPage}
+                                className="mx-1 py-1 px-3 focus:outline-none bg-gray-200 text-gray-600 rounded-lg"
+                            >
+                                Next
+                            </button>
+                        )}
+                    </div>
+                )}
             </div>
         </section>
     );
