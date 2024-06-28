@@ -73,7 +73,7 @@ function ProductCard() {
                                         <img className=" w-full h-80 hover:scale-110 transition-scale-110 duration-300 ease-in-out" src={imageUrl} alt="Product" />
                                     </div>
                                     <div className="p-5 border-t-2">
-                                        <h2 className="tracking-widest text-xs title-font font-medium text-white-400 mb-1" style={{ color: mode === 'dark' ? 'white' : '#ffffff' }}>E-Bharat</h2>
+                                        <h2 className="tracking-widest text-xs title-font font-medium text-white-400 mb-1" style={{ color: mode === 'dark' ? 'white' : '#ffffff' }}>Zound's Music</h2>
                                         <h1 className="title-font text-lg font-medium text-gray-900 mb-3" style={{ color: mode === 'dark' ? 'white' : '#ffffff' }}>{title}</h1>
                                         <p className="leading-relaxed mb-3" style={{ color: mode === 'dark' ? 'white' : '#ffffff' }}>₹{price}</p>
                                         <div className="flex justify-center">
