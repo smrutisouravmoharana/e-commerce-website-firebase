@@ -15,8 +15,9 @@ function AddProduct() {
 
     return (
         <div className='flex justify-center items-center min-h-screen' style={{ backgroundImage: `url(${backgroundImageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-            <div className='bg-gray-800 px-10 py-10 rounded-xl w-full max-w-md relative'>
-                <FaTimes className='text-white cursor-pointer text-3xl absolute top-4 right-4' onClick={goBack} />
+            <div className='bg-gray-800 px-6 py-6 rounded-xl w-full max-w-md relative mt-4 mb-4 overflow-hidden'>
+    <FaTimes className='text-white cursor-pointer text-3xl absolute top-4 right-4' onClick={goBack} />
+
                 <div>
                     <h1 className='text-center text-white text-xl mb-4 font-bold'>Add Product</h1>
                 </div>

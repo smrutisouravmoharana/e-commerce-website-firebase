@@ -84,8 +84,8 @@ function Cart() {
     }
 
     var options = {
-      key: "",
-      key_secret: "",
+      key: "rzp_test_eKrFvUHKiJyWWY",
+      key_secret: "VEU5sdxuZ6V5tyaW8nqllu9P",
       amount: parseInt(grandTotal * 100),
       currency: "INR",
       order_receipt: 'order_rcptid_' + name,
