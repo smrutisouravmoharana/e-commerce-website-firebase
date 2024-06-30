@@ -1,4 +1,3 @@
-
 import React, { useContext, useEffect, useState } from 'react';
 import myContext from '../../context/data/myContext';
 import { useDispatch, useSelector } from 'react-redux';
@@ -29,7 +28,7 @@ function ProductCard() {
         return (
             (searchkey ? item.title.toLowerCase().includes(searchkey.toLowerCase()) : true) &&
             (filterType ? item.category.toLowerCase() === filterType.toLowerCase() : true) &&
-            (filterPrice ? item.price.includes(filterPrice) : true)
+            (filterPrice ? item.price.toString().includes(filterPrice.toString()) : true)
         );
     });
 
@@ -60,7 +59,7 @@ function ProductCard() {
                 </div>
                 <div className="flex flex-wrap -m-4">
                     {currentProducts.map((item, index) => {
-                        const { title, price, imageUrl, id } = item;
+                        const { title, price, salePrice, brandName, imageUrl, id } = item;
                         return (
                             <div key={index} className="p-4 md:w-1/4 drop-shadow-lg">
                                 <div className="h-full border-2 hover:shadow-gray-100 hover:shadow-2xl transition-shadow duration-300 ease-in-out border-gray-200 border-opacity-60 rounded-2xl overflow-hidden"
@@ -73,9 +72,18 @@ function ProductCard() {
                                         <img className=" w-full h-80 hover:scale-110 transition-scale-110 duration-300 ease-in-out" src={imageUrl} alt="Product" />
                                     </div>
                                     <div className="p-5 border-t-2">
-                                        <h2 className="tracking-widest text-xs title-font font-medium text-white-400 mb-1" style={{ color: mode === 'dark' ? 'white' : '#ffffff' }}>Zound's Music</h2>
+                                        <h2 className="tracking-widest text-xs title-font font-medium text-white-400 mb-1" style={{ color: mode === 'dark' ? 'white' : '#ffffff' }}>{brandName}</h2>
                                         <h1 className="title-font text-lg font-medium text-gray-900 mb-3" style={{ color: mode === 'dark' ? 'white' : '#ffffff' }}>{title}</h1>
-                                        <p className="leading-relaxed mb-3" style={{ color: mode === 'dark' ? 'white' : '#ffffff' }}>₹{price}</p>
+                                        <p className="leading-relaxed mb-3" style={{ color: mode === 'dark' ? 'white' : '#ffffff' }}>
+                                            {salePrice ? (
+                                                <>
+                                                    <span className="line-through font-sm text-white">₹{price}</span>
+                                                    <span className="text-white ml-2">₹{salePrice}</span>
+                                                </>
+                                            ) : (
+                                                `₹${price}`
+                                            )}
+                                        </p>
                                         <div className="flex justify-center">
                                             <button type="button"
                                                 onClick={() => addCart(item)}

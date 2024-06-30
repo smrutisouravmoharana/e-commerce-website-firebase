@@ -1,55 +1,70 @@
-import React, { useContext } from 'react'
-import myContext from '../../context/data/myContext'
-import Layout from '../../components/layout/Layout'
-import Loader from '../../components/loader/Loader'
+import React, { useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import myContext from '../../context/data/myContext';
+import Layout from '../../components/layout/Layout';
+import Loader from '../../components/loader/Loader';
 
 function Order() {
-  const userid = JSON.parse(localStorage.getItem('user')).user.uid
-  const context = useContext(myContext)
-  const { mode, loading, order } = context
+  const user = JSON.parse(localStorage.getItem('user'));
+  const userid = user ? user.user.uid : null;
+  const email = user ? user.user.email : null;
+  const context = useContext(myContext);
+  const { mode, loading, order } = context;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (email === "smrutisouravmoharana222@gmail.com") {
+      navigate('/dashboard'); // Navigate to DashboardTab page
+    }
+  }, [email, navigate]);
+
+  if (!userid) {
+    return <h2 className='text-center text-2xl text-white'>Please log in to view your orders</h2>;
+  }
+
+  const userOrders = order.filter(obj => obj.userid === userid);
+
   return (
     <Layout>
       {loading && <Loader />}
-      {order.length > 0 ?
-        (<>
-          <div className=" h-full pt-10">
-            {
-              order.filter(obj => obj.userid == userid).map((order) => {
-                // order.cartItems.map()
-                return (
-                  <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
-                    {
-                      order.cartItems.map((item) => {
-                        return (
-                          <div className="rounded-lg md:w-2/3">
-                            <div className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start" style={{ backgroundColor: mode === 'dark' ? '#282c34' : '', color: mode === 'dark' ? 'white' : '', }}>
-                              <img src={item.imageUrl} alt="product-image" className="w-full rounded-lg sm:w-40" />
-                              <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
-                                <div className="mt-5 sm:mt-0">
-                                  <h2 className="text-lg font-bold text-gray-900" style={{ color: mode === 'dark' ? 'white' : '' }}>{item.title}</h2>
-                                  <p className="mt-1 text-xs text-gray-700" style={{ color: mode === 'dark' ? 'white' : '' }}>{item.description}</p>
-                                  <p className="mt-1 text-xs text-gray-700" style={{ color: mode === 'dark' ? 'white' : '' }}>{item.price}</p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        )
-                      })
-                    }
-                  </div>
-                )
-              })
-            }
-          </div>
-        </>)
-        :
-        (
-          <h2 className=' text-center tex-2xl text-white'>Not Order</h2>
-        )
-
-      }
+      {userOrders.length > 0 ? (
+        <div className="h-full pt-10">
+          <table className="min-w-full bg-white">
+            <thead>
+              <tr>
+                <th className="py-2 px-4 border-b">Image</th>
+                <th className="py-2 px-4 border-b">Title</th>
+                <th className="py-2 px-4 border-b">Description</th>
+                <th className="py-2 px-4 border-b">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {userOrders.map((order, orderIndex) => (
+                order.cartItems.map((item, itemIndex) => (
+                  <tr key={`${orderIndex}-${itemIndex}`}>
+                    <td className="py-2 px-4 border-b">
+                      <img src={item.imageUrl} alt="product-image" className="w-20 h-20 object-cover" />
+                    </td>
+                    <td className="py-2 px-4 border-b" style={{ color: mode === 'dark' ? 'white' : 'black' }}>
+                      {item.title}
+                    </td>
+                    <td className="py-2 px-4 border-b" style={{ color: mode === 'dark' ? 'white' : 'black' }}>
+                      {item.description}
+                    </td>
+                    <td className="py-2 px-4 border-b" style={{ color: mode === 'dark' ? 'white' : 'black' }}>
+                      ₹{item.price}
+                    </td>
+                  </tr>
+                ))
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <h2 className='text-center text-2xl text-white'>No Orders</h2>
+      )}
     </Layout>
-  )
+  );
 }
 
-export default Order
+export default Order;

@@ -24,6 +24,7 @@ export default function Navbar() {
     localStorage.clear('user')
     window.location.href = "/"
   }
+  
 
 
   const cartItems = useSelector((state) => state.cart)
@@ -78,7 +79,7 @@ export default function Navbar() {
                     </Link>
                   </div>
     
-                  {user?.user?.email === 'knupadhyay784@gmail.com' && (
+                  {user?.user?.email === 'smrutisouravmoharana222@gmail.com' && (
                     <div className="flow-root">
                       <Link to={'/dashboard'} className="-m-2 block p-2 font-medium text-gray-900" style={{ color: mode === 'dark' ? 'white' : '', }}>
                         Admin

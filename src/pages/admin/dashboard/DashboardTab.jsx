@@ -91,7 +91,13 @@ function DashboardTab() {
                                                     Title
                                                 </th>
                                                 <th scope="col" className="px-6 py-3">
-                                                    Price
+                                                    MRP Price
+                                                </th>
+                                                <th scope="col" className="px-6 py-3">
+                                                    Sale Price
+                                                </th>
+                                                <th scope="col" className="px-6 py-3">
+                                                    Brand Name
                                                 </th>
                                                 <th scope="col" className="px-6 py-3">
                                                     Category
@@ -106,7 +112,7 @@ function DashboardTab() {
                                         </thead>
                                         <tbody>
                                             {product.map((item, index) => {
-                                                const { title, price, imageUrl, category, date } = item;
+                                                const { title, price, salePrice, brandName, imageUrl, category, date } = item;
                                                 return (
                                                     <tr key={index} className="bg-gray-50 border-b dark:border-gray-700"
                                                         style={{ backgroundColor: mode === 'dark' ? 'rgb(46 49 55)' : '', color: mode === 'dark' ? 'white' : '' }}>
@@ -121,6 +127,12 @@ function DashboardTab() {
                                                         </td>
                                                         <td className="px-6 py-4 text-black" style={{ color: mode === 'dark' ? 'white' : '' }}>
                                                             ₹{price}
+                                                        </td>
+                                                        <td className="px-6 py-4 text-black" style={{ color: mode === 'dark' ? 'white' : '' }}>
+                                                            ₹{salePrice}
+                                                        </td>
+                                                        <td className="px-6 py-4 text-black" style={{ color: mode === 'dark' ? 'white' : '' }}>
+                                                            {brandName}
                                                         </td>
                                                         <td className="px-6 py-4 text-black" style={{ color: mode === 'dark' ? 'white' : '' }}>
                                                             {category}
@@ -176,7 +188,7 @@ function DashboardTab() {
                                                     Title
                                                 </th>
                                                 <th scope="col" className="px-6 py-3">
-                                                    Price
+                                                    Sale Price
                                                 </th>
                                                 <th scope="col" className="px-6 py-3">
                                                     Category
@@ -204,7 +216,7 @@ function DashboardTab() {
                                         <tbody>
                                             {order.flatMap((allorder, orderIndex) => (
                                                 allorder.cartItems.map((item, itemIndex) => {
-                                                    const { title, category, imageUrl, price } = item;
+                                                    const { title, category, imageUrl, salePrice } = item; // Use salePrice here
                                                     const serialNumber = orderIndex * allorder.cartItems.length + itemIndex + 1;
                                                     return (
                                                         <tr key={`${orderIndex}-${itemIndex}`} className="bg-gray-50 border-b dark:border-gray-700" style={{ backgroundColor: mode === 'dark' ? 'rgb(46 49 55)' : '', color: mode === 'dark' ? 'white' : '' }}>
@@ -221,7 +233,7 @@ function DashboardTab() {
                                                                 {title}
                                                             </td>
                                                             <td className="px-6 py-4 text-black" style={{ color: mode === 'dark' ? 'white' : '' }}>
-                                                                ₹{price}
+                                                                ₹{salePrice}
                                                             </td>
                                                             <td className="px-6 py-4 text-black" style={{ color: mode === 'dark' ? 'white' : '' }}>
                                                                 {category}
@@ -253,6 +265,7 @@ function DashboardTab() {
                                 </div>
                             </div>
                         </TabPanel>
+
 
                         {/* users */}
                         <TabPanel>

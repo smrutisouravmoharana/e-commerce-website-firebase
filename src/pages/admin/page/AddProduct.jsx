@@ -16,7 +16,7 @@ function AddProduct() {
     return (
         <div className='flex justify-center items-center min-h-screen' style={{ backgroundImage: `url(${backgroundImageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className='bg-gray-800 px-6 py-6 rounded-xl w-full max-w-md relative mt-4 mb-4 overflow-hidden'>
-    <FaTimes className='text-white cursor-pointer text-3xl absolute top-4 right-4' onClick={goBack} />
+                <FaTimes className='text-white cursor-pointer text-3xl absolute top-4 right-4' onClick={goBack} />
 
                 <div>
                     <h1 className='text-center text-white text-xl mb-4 font-bold'>Add Product</h1>
@@ -44,6 +44,26 @@ function AddProduct() {
                 <div>
                     <input
                         type='text'
+                        value={products.salePrice}
+                        onChange={(e) => setProducts({ ...products, salePrice: e.target.value })}
+                        name='salePrice'
+                        className='bg-gray-600 mb-4 px-2 py-2 w-full rounded-lg text-white placeholder:text-gray-200 outline-none'
+                        placeholder='Product sale price'
+                    />
+                </div>
+                <div>
+                    <input
+                        type='text'
+                        value={products.brandName}
+                        onChange={(e) => setProducts({ ...products, brandName: e.target.value })}
+                        name='brandName'
+                        className='bg-gray-600 mb-4 px-2 py-2 w-full rounded-lg text-white placeholder:text-gray-200 outline-none'
+                        placeholder='Product brand name'
+                    />
+                </div>
+                <div>
+                    <input
+                        type='text'
                         value={products.imageUrl}
                         onChange={(e) => setProducts({ ...products, imageUrl: e.target.value })}
                         name='imageurl'
@@ -65,11 +85,11 @@ function AddProduct() {
                     <textarea
                         cols='30'
                         rows='10'
-                        name='title'
+                        name='description'
                         value={products.description}
                         onChange={(e) => setProducts({ ...products, description: e.target.value })}
                         className='bg-gray-600 mb-4 px-2 py-2 w-full rounded-lg text-white placeholder:text-gray-200 outline-none'
-                        placeholder='Product desc'
+                        placeholder='Product description'
                     ></textarea>
                 </div>
                 <div className='flex justify-center mb-3'>

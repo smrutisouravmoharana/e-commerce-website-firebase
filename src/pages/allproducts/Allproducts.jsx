@@ -48,8 +48,18 @@ function Allproducts() {
                             <div className="p-4">
                                 <h3 className="text-lg font-semibold">{item.title}</h3>
                                 <p className="mt-2 text-gray-600">{item.description}</p>
+                                <p className="mt-1 text-gray-500">Brand: {item.brandName}</p>
                                 <div className="mt-3 flex items-center justify-between">
-                                    <span className="text-xl font-bold">${item.price}</span>
+                                    <div>
+                                        {item.salePrice ? (
+                                            <>
+                                                <span className="text-xl font-bold line-through text-gray-500">${item.price}</span>
+                                                <span className="text-xl font-bold text-red-500 ml-2">${item.salePrice}</span>
+                                            </>
+                                        ) : (
+                                            <span className="text-xl font-bold">${item.price}</span>
+                                        )}
+                                    </div>
                                     <button
                                         onClick={() => addCart(item)}
                                         className="px-3 py-2 bg-blue-500 text-white text-sm font-medium rounded"

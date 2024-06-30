@@ -5,7 +5,6 @@ import myContext from '../../../context/data/myContext';
 // Example URL for background image
 const backgroundImageUrl = 'https://img.freepik.com/free-photo/smartphone-with-headphones_23-2147735024.jpg?uid=R147306243&ga=GA1.1.1087679078.1714562823&semt=ais_user';
 
-
 function UpdateProduct() {
     const context = useContext(myContext);
     const { products, setProducts, updateProduct } = context;
@@ -44,6 +43,26 @@ function UpdateProduct() {
                 <div>
                     <input
                         type='text'
+                        value={products.salePrice}
+                        onChange={(e) => setProducts({ ...products, salePrice: e.target.value })}
+                        name='salePrice'
+                        className='bg-gray-600 mb-4 px-2 py-2 w-full rounded-lg text-white placeholder:text-gray-200 outline-none'
+                        placeholder='Product sale price'
+                    />
+                </div>
+                <div>
+                    <input
+                        type='text'
+                        value={products.brandName}
+                        onChange={(e) => setProducts({ ...products, brandName: e.target.value })}
+                        name='brandName'
+                        className='bg-gray-600 mb-4 px-2 py-2 w-full rounded-lg text-white placeholder:text-gray-200 outline-none'
+                        placeholder='Product brand name'
+                    />
+                </div>
+                <div>
+                    <input
+                        type='text'
                         value={products.imageUrl}
                         onChange={(e) => setProducts({ ...products, imageUrl: e.target.value })}
                         name='imageurl'
@@ -65,11 +84,11 @@ function UpdateProduct() {
                     <textarea
                         cols='30'
                         rows='10'
-                        name='title'
+                        name='description'
                         value={products.description}
                         onChange={(e) => setProducts({ ...products, description: e.target.value })}
                         className='bg-gray-600 mb-4 px-2 py-2 w-full rounded-lg text-white placeholder:text-gray-200 outline-none'
-                        placeholder='Product desc'
+                        placeholder='Product description'
                     ></textarea>
                 </div>
                 <div className='flex justify-center mb-3'>
