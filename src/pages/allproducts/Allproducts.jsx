@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 
 function Allproducts() {
     const context = useContext(myContext);
-    const { mode, product, searchkey, filterType, filterPrice, filterTitle } = context;
+    const { mode, product, searchkey, filterType, filterBrandName, filterTitle } = context;
 
     const dispatch = useDispatch();
     const cartItems = useSelector((state) => state.cart);
@@ -26,13 +26,13 @@ function Allproducts() {
         window.scrollTo(0, 0);
     }, []);
 
-    // Filter products based on search key, category, title, and price
+    // Filter products based on search key, category, title, and brand name
     const filteredProducts = product.filter((item) => {
         return (
             (searchkey ? item.title.toLowerCase().includes(searchkey.toLowerCase()) : true) &&
             (filterType ? item.category.toLowerCase() === filterType.toLowerCase() : true) &&
             (filterTitle ? item.title.toLowerCase() === filterTitle.toLowerCase() : true) &&
-            (filterPrice ? item.price.toString() === filterPrice.toString() : true)
+            (filterBrandName ? item.brandName.toLowerCase() === filterBrandName.toLowerCase() : true)
         );
     });
 

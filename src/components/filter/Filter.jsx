@@ -1,17 +1,15 @@
-/* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useState } from 'react';
 import myContext from '../../context/data/myContext';
 
 function Filter() {
     const context = useContext(myContext);
-    const { mode, searchkey, setSearchkey, filterType, setFilterType, filterTitle, setFilterTitle, filterPrice, setFilterPrice, product } = context;
+    const { mode, searchkey, setSearchkey, filterType, setFilterType, filterBrandName, setFilterBrandName, product } = context;
 
-    const [uniqueTitles, setUniqueTitles] = useState([]);
+    const [uniqueBrandNames, setUniqueBrandNames] = useState([]);
 
     const resetFilter = () => {
         setFilterType('');
-        setFilterPrice('');
-        setFilterTitle('');
+        setFilterBrandName('');
         setSearchkey('');
     };
 
@@ -20,15 +18,15 @@ function Filter() {
         return [...new Set(categories)];
     };
 
-    const getUniqueTitles = (products, category) => {
-        const titles = products
+    const getUniqueBrandNames = (products, category) => {
+        const brandNames = products
             .filter(item => category ? item.category === category : true)
-            .map(item => item.title);
-        return [...new Set(titles)];
+            .map(item => item.brandName);
+        return [...new Set(brandNames)];
     };
 
     useEffect(() => {
-        setUniqueTitles(getUniqueTitles(product, filterType));
+        setUniqueBrandNames(getUniqueBrandNames(product, filterType));
     }, [filterType, product]);
 
     const uniqueCategories = getUniqueCategories(product);
@@ -73,7 +71,7 @@ function Filter() {
                         value={filterType}
                         onChange={(e) => {
                             setFilterType(e.target.value);
-                            setFilterTitle(''); // Reset title when category changes
+                            setFilterBrandName(''); // Reset brand name when category changes
                         }}
                         className="px-4 py-3 w-full rounded-md bg-gray-50 border-transparent outline-0 focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
                         style={{
@@ -86,32 +84,18 @@ function Filter() {
                             <option key={index} value={category}>{category}</option>
                         ))}
                     </select>
-                    {/* <select
-                        value={filterTitle}
-                        onChange={(e) => setFilterTitle(e.target.value)}
-                        className="px-4 py-3 w-full rounded-md bg-gray-50 border-transparent outline-0 focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
-                        style={{
-                            backgroundColor: mode === 'dark' ? 'rgb(64 66 70)' : '',
-                            color: mode === 'dark' ? 'white' : '',
-                        }}
-                    >
-                        <option value="">Select Title</option>
-                        {uniqueTitles.map((title, index) => (
-                            <option key={index} value={title}>{title}</option>
-                        ))}
-                    </select> */}
                     <select
-                        value={filterPrice}
-                        onChange={(e) => setFilterPrice(e.target.value)}
+                        value={filterBrandName}
+                        onChange={(e) => setFilterBrandName(e.target.value)}
                         className="px-4 py-3 w-full rounded-md bg-gray-50 border-transparent outline-0 focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
                         style={{
                             backgroundColor: mode === 'dark' ? 'rgb(64 66 70)' : '',
                             color: mode === 'dark' ? 'white' : '',
                         }}
                     >
-                        <option value="">Select Price</option>
-                        {product.map((item, index) => (
-                            <option key={index} value={item.price}>{item.price}</option>
+                        <option value="">Select Brand Name</option>
+                        {uniqueBrandNames.map((brandName, index) => (
+                            <option key={index} value={brandName}>{brandName}</option>
                         ))}
                     </select>
                 </div>
