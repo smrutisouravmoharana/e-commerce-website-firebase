@@ -21,6 +21,7 @@ import AddProduct from "./pages/admin/page/AddProduct";
 import UpdateProduct from "./pages/admin/page/UpdateProduct";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Allproducts from "./pages/allproducts/Allproducts";
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/productinfo/:id" element={<ProductInfo />} />
+          <Route path="/allproducts" element={<Allproducts />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/addproduct" element={
             <ProtectedRoutesForAdmin>

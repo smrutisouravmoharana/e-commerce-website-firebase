@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 
 function Allproducts() {
     const context = useContext(myContext);
-    const { mode, product, searchkey, filterType, filterPrice, filterTitle, filterBrand } = context;
+    const { mode, product, searchkey, filterType, filterPrice, filterTitle } = context;
 
     const dispatch = useDispatch();
     const cartItems = useSelector((state) => state.cart);
@@ -26,13 +26,13 @@ function Allproducts() {
         window.scrollTo(0, 0);
     }, []);
 
-    // Filter products based on search key, category, title, and brand
+    // Filter products based on search key, category, title, and price
     const filteredProducts = product.filter((item) => {
         return (
             (searchkey ? item.title.toLowerCase().includes(searchkey.toLowerCase()) : true) &&
             (filterType ? item.category.toLowerCase() === filterType.toLowerCase() : true) &&
             (filterTitle ? item.title.toLowerCase() === filterTitle.toLowerCase() : true) &&
-            (filterBrand ? item.brandName.toLowerCase() === filterBrand.toLowerCase() : true)
+            (filterPrice ? item.price.toString() === filterPrice.toString() : true)
         );
     });
 
@@ -44,20 +44,25 @@ function Allproducts() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-8">
                     {filteredProducts.map((item, index) => (
                         <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src={item.image} alt={item.title} className="w-full h-56 object-cover" />
+                            <img
+                                src={item.image}
+                                alt={item.title}
+                                className="w-full h-56 object-cover"
+                                onError={(e) => { e.target.onerror = null; e.target.src = 'default-image-path.jpg'; }}
+                            />
                             <div className="p-4">
                                 <h3 className="text-lg font-semibold">{item.title}</h3>
                                 <p className="mt-2 text-gray-600">{item.description}</p>
-                                <p className="mt-1 text-gray-500">Brand: {item.brandName}</p>
+                                <p className="mt-2 font-semibold text-black">Brand: {item.brandName}</p>
                                 <div className="mt-3 flex items-center justify-between">
                                     <div>
                                         {item.salePrice ? (
                                             <>
-                                                <span className="text-xl font-bold line-through text-gray-500">${item.price}</span>
-                                                <span className="text-xl font-bold text-red-500 ml-2">${item.salePrice}</span>
+                                                <span className="text-xl font-bold text-black">₹{item.salePrice}</span>
+                                                <span className="ml-2 text-lg line-through text-gray-500">₹{item.price}</span>
                                             </>
                                         ) : (
-                                            <span className="text-xl font-bold">${item.price}</span>
+                                            <span className="text-xl font-bold">₹{item.price}</span>
                                         )}
                                     </div>
                                     <button

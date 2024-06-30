@@ -16,6 +16,13 @@ function Footer() {
     color: mode === 'dark' ? 'white' : '',
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <div>
       <footer className="text-white body-font" style={footerStyles}>
@@ -25,16 +32,16 @@ function Footer() {
               <h2 className="title-font font-bold text-black tracking-widest text-sm mb-3" style={{ color: mode === 'dark' ? 'white' : '' }}>CATEGORIES</h2>
               <nav className="list-none mb-10">
                 <li>
-                  <Link to={'/Home'} className="text-white font-bold hover:text-gray-800" style={{ color: mode === 'dark' ? 'white' : '' }}>Home</Link>
+                  <Link to={'/'} className="text-white font-bold hover:text-gray-800" style={{ color: mode === 'dark' ? 'white' : '' }} onClick={scrollToTop}>Home</Link>
                 </li>
                 <li>
-                  <Link to={'/'} className="text-white font-bold hover:text-gray-800" style={{ color: mode === 'dark' ? 'white' : '' }}>Order</Link>
+                  <Link to={'/'} className="text-white font-bold hover:text-gray-800" style={{ color: mode === 'dark' ? 'white' : '' }} onClick={scrollToTop}>Order</Link>
                 </li>
                 <li>
-                  <Link to={'/'} className="text-white font-bold hover:text-gray-800" style={{ color: mode === 'dark' ? 'white' : '' }}>Local For Vocal</Link>
+                  <Link to={'/'} className="text-white font-bold hover:text-gray-800" style={{ color: mode === 'dark' ? 'white' : '' }} onClick={scrollToTop}>Local For Vocal</Link>
                 </li>
                 <li>
-                  <Link to={'/'} className="text-white font-bold hover:text-gray-800" style={{ color: mode === 'dark' ? 'white' : '' }}>Cart</Link>
+                  <Link to={'/'} className="text-white font-bold hover:text-gray-800" style={{ color: mode === 'dark' ? 'white' : '' }} onClick={scrollToTop}>Cart</Link>
                 </li>
               </nav>
             </div>
@@ -42,13 +49,13 @@ function Footer() {
               <h2 className="title-font font-bold text-gray-900 tracking-widest text-sm mb-3 uppercase" style={{ color: mode === 'dark' ? 'white' : '' }}>Customer Service</h2>
               <nav className="list-none mb-10">
                 <li>
-                  <Link to={'/returnpolicy'} className="text-white font-bold hover:text-gray-800" style={{ color: mode === 'dark' ? 'white' : '' }}>Return Policy</Link>
+                  <Link to={'/'} className="text-white font-bold hover:text-gray-800" style={{ color: mode === 'dark' ? 'white' : '' }} onClick={scrollToTop}>Return Policy</Link>
                 </li>
                 <li>
-                  <Link to={'/about'} className="text-white font-bold hover:text-gray-800" style={{ color: mode === 'dark' ? 'white' : '' }}>About</Link>
+                  <Link to={'/'} className="text-white font-bold hover:text-gray-800" style={{ color: mode === 'dark' ? 'white' : '' }} onClick={scrollToTop}>About</Link>
                 </li>
                 <li>
-                  <Link to={'/contact'} className="text-white font-bold hover:text-gray-800" style={{ color: mode === 'dark' ? 'white' : '' }}>Contact Us</Link>
+                  <Link to={'/'} className="text-white font-bold hover:text-gray-800" style={{ color: mode === 'dark' ? 'white' : '' }} onClick={scrollToTop}>Contact Us</Link>
                 </li>
               </nav>
             </div>
@@ -57,7 +64,7 @@ function Footer() {
               <h2 className="title-font font-bold text-gray-900 tracking-widest text-sm mb-3 uppercase" style={{ color: mode === 'dark' ? 'white' : '' }}>Services</h2>
               <nav className="list-none mb-10">
                 <li>
-                  <Link to={'/privacypolicy'} className="text-white font-bold hover:text-gray-800" style={{ color: mode === 'dark' ? 'white' : '' }}>Privacy</Link>
+                  <Link to={'/'} className="text-white font-bold hover:text-gray-800" style={{ color: mode === 'dark' ? 'white' : '' }} onClick={scrollToTop}>Privacy</Link>
                 </li>
               </nav>
             </div>
@@ -67,9 +74,8 @@ function Footer() {
           </div>
         </div>
 
-        {/* <div className="bg-gray-200" style={{ backgroundColor: mode === 'dark' ? 'rgb(55 57 61)' : '', color: mode === 'dark' ? 'white' : '' }}> */}
         <div className="container px-5 py-3 mx-auto flex items-center sm:flex-row flex-col">
-          <Link to={'/'} className='flex'>
+          <Link to={'/'} className='flex' onClick={scrollToTop}>
             <div className="flex">
               <h1 className='text-2xl font-bold text-black px-2 py-1 rounded' style={{ color: mode === 'dark' ? 'white' : '' }}>Zound's Music</h1>
             </div>
@@ -92,7 +98,6 @@ function Footer() {
             </a>
           </span>
         </div>
-        {/* </div> */}
       </footer>
     </div>
   );
