@@ -13,13 +13,15 @@ function Order() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (email === "smrutisouravmoharana222@gmail.com") {
-      navigate('/dashboard'); // Navigate to DashboardTab page
+    if (!userid) {
+      navigate('/login'); // Navigate to the sign-in page if not logged in
+    } else if (email === "smrutisouravmoharana222@gmail.com") {
+      navigate('/dashboard'); // Navigate to the Dashboard page
     }
-  }, [email, navigate]);
+  }, [email, userid, navigate]);
 
   if (!userid) {
-    return <h2 className='text-center text-2xl text-white'>Please log in to view your orders</h2>;
+    return null; // Return null to prevent rendering while redirecting
   }
 
   const userOrders = order.filter(obj => obj.userid === userid);
@@ -29,33 +31,41 @@ function Order() {
       {loading && <Loader />}
       {userOrders.length > 0 ? (
         <div className="h-full pt-10">
-          <table className="min-w-full bg-white">
+          <table className={`min-w-full ${mode === 'dark' ? 'bg-black text-white' : 'bg-white text-black'}`}>
             <thead>
               <tr>
+                <th className="py-2 px-4 border-b">S.NO</th>
+                <th className="py-2 px-4 border-b">Payment ID</th>
+                <th className="py-2 px-4 border-b">Address</th>
+                <th className="py-2 px-4 border-b">Pincode</th>
+                <th className="py-2 px-4 border-b">Phone Number</th>
+                <th className="py-2 px-4 border-b">Email</th>
+                <th className="py-2 px-4 border-b">Date</th>
                 <th className="py-2 px-4 border-b">Image</th>
                 <th className="py-2 px-4 border-b">Title</th>
-                <th className="py-2 px-4 border-b">Description</th>
                 <th className="py-2 px-4 border-b">Price</th>
               </tr>
             </thead>
             <tbody>
               {userOrders.map((order, orderIndex) => (
-                order.cartItems.map((item, itemIndex) => (
-                  <tr key={`${orderIndex}-${itemIndex}`}>
-                    <td className="py-2 px-4 border-b">
-                      <img src={item.imageUrl} alt="product-image" className="w-20 h-20 object-cover" />
-                    </td>
-                    <td className="py-2 px-4 border-b" style={{ color: mode === 'dark' ? 'white' : 'black' }}>
-                      {item.title}
-                    </td>
-                    <td className="py-2 px-4 border-b" style={{ color: mode === 'dark' ? 'white' : 'black' }}>
-                      {item.description}
-                    </td>
-                    <td className="py-2 px-4 border-b" style={{ color: mode === 'dark' ? 'white' : 'black' }}>
-                      ₹{item.price}
-                    </td>
-                  </tr>
-                ))
+                <React.Fragment key={orderIndex}>
+                  {order.cartItems.map((item, itemIndex) => (
+                    <tr key={`${orderIndex}-${itemIndex}`}>
+                      <td className="py-2 px-4 border-b">{orderIndex + 1}</td>
+                      <td className="py-2 px-4 border-b">{order.paymentId}</td>
+                      <td className="py-2 px-4 border-b">{order.addressInfo.address}</td>
+                      <td className="py-2 px-4 border-b">{order.addressInfo.pincode}</td>
+                      <td className="py-2 px-4 border-b">{order.addressInfo.phoneNumber}</td>
+                      <td className="py-2 px-4 border-b">{order.email}</td>
+                      <td className="py-2 px-4 border-b">{order.addressInfo.date}</td>
+                      <td className="py-2 px-4 border-b">
+                        <img src={item.imageUrl} alt="product-image" className="w-20 h-20 object-cover" />
+                      </td>
+                      <td className="py-2 px-4 border-b">{item.title}</td>
+                      <td className="py-2 px-4 border-b">₹{item.price}</td>
+                    </tr>
+                  ))}
+                </React.Fragment>
               ))}
             </tbody>
           </table>

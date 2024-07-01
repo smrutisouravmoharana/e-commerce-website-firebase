@@ -74,7 +74,7 @@ export default function Navbar() {
                     All Products
                   </Link>
                   <div className="flow-root">
-                    <Link to={'/order'} style={{ color: mode === 'dark' ? 'white' : '', }} className="-m-2 block p-2 font-medium text-gray-900">
+                    <Link to={'/'} style={{ color: mode === 'dark' ? 'white' : '', }} className="-m-2 block p-2 font-medium text-gray-900">
                       Order
                     </Link>
                   </div>
@@ -163,7 +163,7 @@ export default function Navbar() {
                   <Link to={'/allproducts'} className="text-lg font-medium" style={{ color: mode === 'dark' ? 'white' : 'black' }}>
                     All Products
                   </Link>
-                  <Link to={'/order'} className="text-lg font-medium" style={{ color: mode === 'dark' ? 'white' : 'black' }}>
+                  <Link to={'/orderes'} className="text-lg font-medium" style={{ color: mode === 'dark' ? 'white' : 'black' }}>
                     Order
                   </Link>
 

@@ -46,6 +46,7 @@ function App() {
           <Route path="/productinfo/:id" element={<ProductInfo />} />
           <Route path="/allproducts" element={<Allproducts />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/orderes" element={<Order />} />
           <Route path="/addproduct" element={
             <ProtectedRoutesForAdmin>
               <AddProduct/>
