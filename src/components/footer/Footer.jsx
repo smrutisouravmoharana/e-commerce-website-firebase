@@ -27,7 +27,7 @@ function Footer() {
   return (
     <div>
       <footer className="text-white body-font" style={footerStyles}>
-        <div className="container px-5 py-24 mx-auto">
+        <div className="container px-5 py-12 mx-auto">
           <div className="flex flex-wrap md:text-left text-center order-first">
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
               <h2 className="title-font font-bold text-black tracking-widest text-sm mb-3" style={{ color: mode === 'dark' ? 'white' : '' }}>CATEGORIES</h2>
@@ -56,12 +56,14 @@ function Footer() {
                   <Link to={'/'} className="text-white font-bold hover:text-gray-800" style={{ color: mode === 'dark' ? 'white' : '' }} onClick={scrollToTop}>About</Link>
                 </li>
                 <li>
-                  <Link to={'/'} className="text-white font-bold hover:text-gray-800" style={{ color: mode === 'dark' ? 'white' : '' }} onClick={scrollToTop}>Contact Us</Link>
+                  <Link to="/contactpage" className="text-white font-bold hover:text-gray-800" style={{ color: mode === 'dark' ? 'white' : '' }} onClick={scrollToTop}>
+                    Contact Us
+                  </Link>
                 </li>
               </nav>
             </div>
 
-            {/* Google Map embedded in the top-right corner */}
+            {/* Google Map embedded in the top-right corner
             <div style={{ position: 'absolute', top: '10px', right: '10px', zIndex: '10' }}>
               <iframe
                 width="200"
@@ -74,7 +76,7 @@ function Footer() {
                 allow="fullscreen"
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
-            </div>
+            </div> */}
 
             <div className="lg:w-1/4 md:w-1/2 w-full px-4 mt-4 md:mt-0"> {/* Adjusted margin here */}
               <h2 className="title-font font-bold text-gray-900 tracking-widest text-sm mb-3 uppercase" style={{ color: mode === 'dark' ? 'white' : '' }}>Services</h2>

@@ -45,9 +45,9 @@ function Allproducts() {
                     {filteredProducts.map((item, index) => (
                         <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
                             <img
-                                src={item.image}
+                                src={item.imageUrl}
                                 alt={item.title}
-                                className="w-full h-56 object-cover"
+                                className="w-full h-64 object-cover"
                                 onError={(e) => { e.target.onerror = null; e.target.src = 'default-image-path.jpg'; }}
                             />
                             <div className="p-4">
