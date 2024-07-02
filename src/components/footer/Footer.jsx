@@ -30,7 +30,10 @@ function Footer() {
         <div className="container px-5 py-12 mx-auto">
           <div className="flex flex-wrap md:text-left text-center order-first">
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-              <h2 className="title-font font-bold text-black tracking-widest text-sm mb-3" style={{ color: mode === 'dark' ? 'white' : '' }}>CATEGORIES</h2>
+              <h2 className="title-font font-bold tracking-widest text-sm mb-3" style={{ color: 'black' }}>
+                CATEGORIES
+              </h2>
+
               <nav className="list-none mb-10">
                 <li>
                   <Link to={'/'} className="text-white font-bold hover:text-gray-800" style={{ color: mode === 'dark' ? 'white' : '' }} onClick={scrollToTop}>Home</Link>
@@ -47,7 +50,10 @@ function Footer() {
               </nav>
             </div>
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-              <h2 className="title-font font-bold text-gray-900 tracking-widest text-sm mb-3 uppercase" style={{ color: mode === 'dark' ? 'white' : '' }}>Customer Service</h2>
+              <h2 className="title-font font-bold tracking-widest text-sm mb-3 uppercase" style={{ color: 'black' }}>
+                Customer Service
+              </h2>
+
               <nav className="list-none mb-10">
                 <li>
                   <Link to={'/'} className="text-white font-bold hover:text-gray-800" style={{ color: mode === 'dark' ? 'white' : '' }} onClick={scrollToTop}>Return Policy</Link>
@@ -79,7 +85,10 @@ function Footer() {
             </div> */}
 
             <div className="lg:w-1/4 md:w-1/2 w-full px-4 mt-4 md:mt-0"> {/* Adjusted margin here */}
-              <h2 className="title-font font-bold text-gray-900 tracking-widest text-sm mb-3 uppercase" style={{ color: mode === 'dark' ? 'white' : '' }}>Services</h2>
+              <h2 className="title-font font-bold text-gray-900 tracking-widest text-sm mb-3 uppercase" style={{ color: 'black' }}>
+                Services
+              </h2>
+
               <nav className="list-none mb-10">
                 <li>
                   <Link to={'/'} className="text-white font-bold hover:text-gray-800" style={{ color: mode === 'dark' ? 'white' : '' }} onClick={scrollToTop}>Privacy</Link>
@@ -97,7 +106,10 @@ function Footer() {
         <div className="container px-5 py-3 mx-auto flex items-center sm:flex-row flex-col">
           <Link to={'/'} className='flex' onClick={scrollToTop}>
             <div className="flex">
-              <h1 className='text-2xl font-bold text-black px-2 py-1 rounded' style={{ color: mode === 'dark' ? 'white' : '' }}>Zound's Musik</h1>
+              <h1 className='text-2xl font-bold text-black px-2 py-1 rounded' style={{ color: 'black' }}>
+                Zound's Musik
+              </h1>
+
             </div>
           </Link>
           <p className="text-sm text-white sm:ml-6 sm:mt-0 mt-4" style={{ color: mode === 'dark' ? 'white' : '' }}>© 2024 Zound's Musik —

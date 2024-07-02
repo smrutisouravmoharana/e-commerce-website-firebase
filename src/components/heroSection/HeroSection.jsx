@@ -1,7 +1,7 @@
-// eslint-disable-next-line no-unused-vars
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 // Import your local images
 import img1 from '../../assets/violin-wreath-flowers.jpg';
@@ -29,13 +29,19 @@ function HeroSection() {
         dotColor="#000000" // Set dot color to black
       >
         <div>
-          <img src={img1} alt="Image 1" style={imgStyle} />
+          <Link to="/allproducts">
+            <img src={img1} alt="Image 1" style={imgStyle} />
+          </Link>
         </div>
         <div>
-          <img src={img2} alt="Image 2" style={imgStyle} />
+          <Link to="/allproducts">
+            <img src={img2} alt="Image 2" style={imgStyle} />
+          </Link>
         </div>
         <div>
-          <img src={img3} alt="Image 3" style={imgStyle} />
+          <Link to="/allproducts">
+            <img src={img3} alt="Image 3" style={imgStyle} />
+          </Link>
         </div>
       </Carousel>
     </div>

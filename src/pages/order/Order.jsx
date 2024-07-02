@@ -69,10 +69,17 @@ function Order() {
               ))}
             </tbody>
           </table>
+
+          <div className="mt-8"></div> {/* Space after the table */}
         </div>
       ) : (
         <h2 className='text-center text-2xl text-white'>No Orders</h2>
       )}
+
+      {/* Footer part */}
+      <footer className="mt-8">
+        {/* Your footer content here */}
+      </footer>
     </Layout>
   );
 }

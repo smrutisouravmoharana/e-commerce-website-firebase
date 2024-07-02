@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import { GrLocation } from "react-icons/gr";
 import { MdOutlinePhone, MdOutlineMailOutline, MdOutlineFax, MdOutlineAddLocation } from "react-icons/md";
+import myContext from '../../context/data/myContext';
 import img1 from "../../assets/acoustic-guitar-snare-drum-black-background-isolated.jpg";
 
 
 
 const ContactUs = () => {
+
+  const context = useContext(myContext);
+  const { mode } = context;
   const posts = [
     {
       id: 1,
@@ -56,7 +60,7 @@ const ContactUs = () => {
               <div
                 key={post.id}
                 className="flex flex-col items-center p-6 rounded-lg shadow-lg"
-                style={{ backgroundColor: '#acaef5' }}
+                style={{ backgroundColor: mode === 'dark' ? '#282c34' : '#acaef5', borderColor: mode === 'dark' ? 'white' : 'transparent', borderWidth: '1px', borderStyle: 'solid' }}
               >
                 <div className="text-5xl mb-4 text-white">{post.icon}</div>
                 <h3 className="text-lg font-bold text-white">{post.title}</h3>
@@ -107,14 +111,15 @@ const ContactUs = () => {
             <div className="w-full lg:w-2/5">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.4764739737107!2d93.933285474428!3d24.81337414714178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x374927b1c771e2d3%3A0xd43b7c8901a240f6!2sZound&#39;s%20Musik%20Nagamapal!5e0!3m2!1sen!2sin!4v1719764330580!5m2!1sen!2sin"
-                className="w-full h-72 lg:h-96 border-0 rounded-lg"
+                className="w-full h-72 lg:h-96 rounded-lg"
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Google Map"
-                style={{ minHeight: '300px' }} // Optional: Set a minimum height to ensure visibility
+                style={{ minHeight: '300px', border: mode === 'dark' ? '2px solid blue' : 'none' }}
               ></iframe>
             </div>
+
           </div>
         </div>
       </div>

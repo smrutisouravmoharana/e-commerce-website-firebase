@@ -62,9 +62,13 @@ function Filter() {
                     <p className="font-medium">
                         Filters
                     </p>
-                    <button onClick={resetFilter} className="px-4 py-2 bg-gray-50 hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md" style={{ color: mode === 'dark' ? 'white' : '' }}>
+                    <button
+                        onClick={resetFilter}
+                        className="px-4 py-2 bg-gray-50 hover:bg-gray-200 text-black text-sm font-medium rounded-md"
+                    >
                         Reset Filter
                     </button>
+
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
                     <select

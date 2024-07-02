@@ -10,7 +10,7 @@ import { fireDB } from '../../fireabase/FirebaseConfig';
 
 function ProductInfo() {
     const context = useContext(myContext);
-    const { loading, setLoading } = context;
+    const { mode, loading, setLoading } = context;
 
     const [products, setProducts] = useState(null);
     const [isWishListed, setIsWishListed] = useState(false);
@@ -62,10 +62,10 @@ function ProductInfo() {
                                 />
                             </div>
                             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                                <h2 className="text-sm title-font text-gray-500 tracking-widest">
+                                <h2 className={`text-sm title-font tracking-widest ${mode === 'dark' ? 'text-white' : 'text-gray-500'}`}>
                                     {products.brandName}
                                 </h2>
-                                <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
+                                <h1 className={`text-3xl title-font font-medium mb-1 ${mode === 'dark' ? 'text-white' : 'text-gray-900'}`}>
                                     {products.title}
                                 </h1>
                                 <div className="flex mb-4">
@@ -166,29 +166,24 @@ function ProductInfo() {
                                         </a>
                                     </span>
                                 </div>
-                                <p className="leading-relaxed border-b-2 mb-5 pb-5">
+                                <p className={`leading-relaxed border-b-2 mb-5 pb-5 ${mode === 'dark' ? 'text-white' : 'text-gray-900'}`}>
                                     {products.description}
                                 </p>
+
                                 <div className="flex items-center mb-4">
-                                    <span className="title-font font-medium text-2xl text-gray-900">
-                                        ₹{products.salePrice || products.price}
+                                    <span className={`title-font font-medium text-2xl ${mode === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                                        ₹{products.price}
                                     </span>
-                                    {products.salePrice && (
-                                        <span className="line-through text-gray-500 ml-2">
-                                            ₹{products.price}
-                                        </span>
-                                    )}
-                                </div>
-                                <div className="flex">
+
                                     <button
                                         onClick={() => addCart(products)}
                                         className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
                                     >
-                                        Add To Cart
+                                        Add to Cart
                                     </button>
                                     <button
                                         onClick={toggleWishList}
-                                        className={`rounded-full w-10 h-10 p-0 border-0 inline-flex items-center justify-center ml-4 ${isWishListed ? 'bg-red-500 text-white' : 'bg-gray-200 text-gray-500'
+                                        className={`ml-4 p-2 rounded-full focus:outline-none ${isWishListed ? 'bg-red-500 text-white' : 'bg-gray-200 text-gray-800'
                                             }`}
                                     >
                                         <svg
@@ -199,7 +194,7 @@ function ProductInfo() {
                                             className="w-5 h-5"
                                             viewBox="0 0 24 24"
                                         >
-                                            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+                                            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0l-1.06 1.06-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78v0z" />
                                         </svg>
                                     </button>
                                 </div>
