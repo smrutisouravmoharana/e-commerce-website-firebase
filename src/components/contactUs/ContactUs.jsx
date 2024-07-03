@@ -17,25 +17,25 @@ const ContactUs = () => {
       id: 1,
       title: 'Our Main Office',
       icon: <MdOutlineAddLocation size={30} className="text-orange-600" />,
-      description: 'SoHo 94 Broadway St New York, NY 1001',
+      description: '9/4, South Buxara 1st Bye Lane, HOWRAH, West Bengal, 711109',
     },
     {
       id: 2,
       title: 'Phone Number',
       icon: <MdOutlinePhone size={30} className="text-orange-600" />,
-      description: '234-9876-5400 888-0123-4567 (Toll Free)',
+      description: '+91-9874963112 (Toll Free)',
     },
     {
       id: 3,
       title: 'Fax',
       icon: <MdOutlineFax size={30} className="text-orange-600" />,
-      description: '1-234-567-8900',
+      description: '9874963112',
     },
     {
       id: 4,
       title: 'Email',
       icon: <MdOutlineMailOutline size={30} className="text-orange-600" />,
-      description: 'hello@theme.com',
+      description: 'ms.designo@yahoo.com',
     },
   ];
 
