@@ -15,7 +15,7 @@ function Order() {
   useEffect(() => {
     if (!userid) {
       navigate('/login'); // Navigate to the sign-in page if not logged in
-    } else if (email === "smrutisouravmoharana222@gmail.com") {
+    } else if (email === "zounds2024.musik@gmail.com") {
       navigate('/dashboard'); // Navigate to the Dashboard page
     }
   }, [email, userid, navigate]);
