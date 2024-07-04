@@ -211,7 +211,7 @@ function DashboardTab() {
                                                 <th scope="col" className="px-6 py-3">
                                                     Date
                                                 </th>
-                                                <th scope="col" className="px-6 py-3">Grand Total</th>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -257,9 +257,7 @@ function DashboardTab() {
                                                             <td className="px-6 py-4 text-black" style={{ color: mode === 'dark' ? 'white' : '' }}>
                                                                 {allorder.date}
                                                             </td>
-                                                            <td className="px-6 py-4 text-black" style={{ color: mode === 'dark' ? 'white' : '' }}>
-                                                                {allorder.grandTotal}
-                                                            </td>
+                                                            
                                                         </tr>
                                                     )
                                                 })
