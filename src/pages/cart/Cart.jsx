@@ -101,6 +101,8 @@ function Cart() {
           email: JSON.parse(localStorage.getItem('user')).user.email,
           userid: JSON.parse(localStorage.getItem('user')).user.uid,
           paymentId,
+          status: 'Pending', // Initial status
+          grandTotal: grandTotal.toFixed(2) // Include grand total
         };
 
         try {

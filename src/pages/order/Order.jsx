@@ -44,6 +44,8 @@ function Order() {
                 <th className="py-2 px-4 border-b">Image</th>
                 <th className="py-2 px-4 border-b">Title</th>
                 <th className="py-2 px-4 border-b">Price</th>
+                <th className="py-2 px-4 border-b">Grand Total</th>
+                <th className="py-2 px-4 border-b">Status</th>
               </tr>
             </thead>
             <tbody>
@@ -63,6 +65,8 @@ function Order() {
                       </td>
                       <td className="py-2 px-4 border-b">{item.title}</td>
                       <td className="py-2 px-4 border-b">₹{item.price}</td>
+                      <td className="py-2 px-4 border-b">₹{order.grandTotal}</td>
+                      <td className="py-2 px-4 border-b">{order.status}</td>
                     </tr>
                   ))}
                 </React.Fragment>

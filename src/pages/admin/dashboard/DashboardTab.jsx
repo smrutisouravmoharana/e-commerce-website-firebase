@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import myContext from '../../../context/data/myContext';
-import Layout from '../../../components/layout/Layout';
 import { MdOutlineProductionQuantityLimits } from 'react-icons/md';
 import { FaUser, FaCartPlus } from 'react-icons/fa';
 import { AiFillShopping } from 'react-icons/ai';
@@ -9,17 +8,7 @@ import { Link } from 'react-router-dom';
 
 function DashboardTab() {
     const context = useContext(myContext);
-    const { mode, product, edithandle, deleteProduct, order, user } = context;
-
-    let [isOpen, setIsOpen] = useState(false);
-
-    function closeModal() {
-        setIsOpen(false);
-    }
-
-    function openModal() {
-        setIsOpen(true);
-    }
+    const { mode, product, edithandle, deleteProduct, order, user, updateOrderStatus } = context;
 
     const add = () => {
         window.location.href = '/addproduct';
@@ -31,6 +20,8 @@ function DashboardTab() {
         console.log('Orders:', order);
         console.log('Users:', user);
     }, [product, order, user]);
+
+   
 
     return (
         <>
@@ -178,6 +169,7 @@ function DashboardTab() {
                                                 <th scope="col" className="px-6 py-3">
                                                     S.No
                                                 </th>
+                                                
                                                 <th scope="col" className="px-6 py-3">
                                                     Payment ID
                                                 </th>
@@ -211,7 +203,13 @@ function DashboardTab() {
                                                 <th scope="col" className="px-6 py-3">
                                                     Date
                                                 </th>
-                                                
+                                                <th scope="col" className="px-6 py-3">
+                                                    Total Amount
+                                                </th>
+                                                <th scope="col" className="px-6 py-3">
+                                                    Status
+                                                </th>
+                            
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -224,6 +222,7 @@ function DashboardTab() {
                                                             <td className="px-6 py-4 text-black" style={{ color: mode === 'dark' ? 'white' : '' }}>
                                                                 {serialNumber}
                                                             </td>
+                                                            
                                                             <td className="px-6 py-4 text-black" style={{ color: mode === 'dark' ? 'white' : '' }}>
                                                                 {allorder.paymentId}
                                                             </td>
@@ -257,7 +256,12 @@ function DashboardTab() {
                                                             <td className="px-6 py-4 text-black" style={{ color: mode === 'dark' ? 'white' : '' }}>
                                                                 {allorder.date}
                                                             </td>
-                                                            
+                                                            <td className="px-6 py-4 text-black" style={{ color: mode === 'dark' ? 'white' : '' }}>
+                                                                {allorder.grandTotal}
+                                                            </td>
+                                                            <td className="px-6 py-4 text-black" style={{ color: mode === 'dark' ? 'white' : '' }}>
+                                                                {allorder.status}
+                                                            </td>
                                                         </tr>
                                                     )
                                                 })
