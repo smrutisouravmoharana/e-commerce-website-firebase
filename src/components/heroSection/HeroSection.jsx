@@ -3,11 +3,6 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
-// Import your local images
-import img1 from '../../assets/violin-wreath-flowers.jpg';
-import img2 from '../../assets/high-angle-shot-guitar-grass.jpg';
-import img3 from '../../assets/string-instruments-close-up-musical-concert-generative-ai.jpg';
-
 function HeroSection() {
   const imgStyle = {
     width: '100%',
@@ -30,19 +25,20 @@ function HeroSection() {
       >
         <div>
           <Link to="/allproducts">
-            <img src={img1} alt="Image 1" style={imgStyle} />
+            <img src="https://t4.ftcdn.net/jpg/07/27/57/07/240_F_727570773_jqgl32cLjXX3qYH19036iHEPMUIdDpgH.jpg" alt="Image 1" style={imgStyle} />
           </Link>
         </div>
         <div>
           <Link to="/allproducts">
-            <img src={img2} alt="Image 2" style={imgStyle} />
+            <img src="https://t4.ftcdn.net/jpg/08/48/90/71/240_F_848907155_lMcGZaGFlSgaPR3ECC2ulv0nubvFGCaY.jpg" alt="Image 2" style={imgStyle} />
           </Link>
         </div>
         <div>
           <Link to="/allproducts">
-            <img src={img3} alt="Image 3" style={imgStyle} />
+            <img src="https://t3.ftcdn.net/jpg/08/58/74/64/240_F_858746413_iRyZv53rtvfZCxfNPFeeYZJ72eidVxHN.jpg" alt="Image 3" style={imgStyle} />
           </Link>
         </div>
+        
       </Carousel>
     </div>
   );
