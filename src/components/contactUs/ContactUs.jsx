@@ -17,25 +17,25 @@ const ContactUs = () => {
       id: 1,
       title: 'Our Main Office',
       icon: <MdOutlineAddLocation size={30} className="text-orange-600" />,
-      description: '9/4, South Buxara 1st Bye Lane, HOWRAH, West Bengal, 711109',
+      description: '22, GONERNOR ROAD, PAONA BAZAR, Imphal West, Manipur, 795001',
     },
     {
       id: 2,
       title: 'Phone Number',
       icon: <MdOutlinePhone size={30} className="text-orange-600" />,
-      description: '+91-9874963112 (Toll Free)',
+      description: '+91-9366149337 (Toll Free)',
     },
     {
       id: 3,
       title: 'Fax',
       icon: <MdOutlineFax size={30} className="text-orange-600" />,
-      description: '9874963112',
+      description: '9366149337',
     },
     {
       id: 4,
       title: 'Email',
       icon: <MdOutlineMailOutline size={30} className="text-orange-600" />,
-      description: 'ms.designo@yahoo.com',
+      description: 'zounds2024.musik@gmail.com',
     },
   ];
 
@@ -110,7 +110,7 @@ const ContactUs = () => {
             </form>
             <div className="w-full lg:w-2/5">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.4764739737107!2d93.933285474428!3d24.81337414714178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x374927b1c771e2d3%3A0xd43b7c8901a240f6!2sZound&#39;s%20Musik%20Nagamapal!5e0!3m2!1sen!2sin!4v1719764330580!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.7329121291295!2d93.93296433765711!3d24.804597625564007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3749264d391265af%3A0xe367b71a2f6c9017!2s22%2C%20Governer%20Rd%2C%20Imphal%2C%20Manipur%20795001!5e0!3m2!1sen!2sin!4v1720432357342!5m2!1sen!2sin"
                 className="w-full h-72 lg:h-96 rounded-lg"
                 allowFullScreen=""
                 loading="lazy"
