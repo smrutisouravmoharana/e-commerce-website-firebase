@@ -172,7 +172,7 @@ function ProductInfo() {
 
                                 <div className="flex items-center mb-4">
                                     <span className={`title-font font-medium text-2xl ${mode === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                                        ₹{products.price}
+                                        ₹{products.salePrice}
                                     </span>
 
                                     <button
